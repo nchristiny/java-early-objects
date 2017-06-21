@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/Users/nyc/Dropbox/school/CIS 144 - Java Programming/Source Code Deitel/code_examples/ch02/fig02_15"/>
+		<item value="/Users/nyc/Dropbox/school/CIS 144 - Java Programming/workspace/Lab2"/>
+		<item value="/Users/nyc/Dropbox/school/CIS 144 - Java Programming/workspace"/>
+		<item value="/Users/nyc/workspace/Demos"/>
+		<item value="/Users/nyc/Dropbox/school/CIS 144 - Java Programming/Source Code Deitel/code_examples/ch01/painter"/>
+		<item value="/Users/nyc/workspace/Cylinder"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/Users/nyc/Dropbox/school/CIS 144 - Java Programming/workspace"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+	<section name="SaveAsDialogSettings">
+		<item value="525" key="DIALOG_WIDTH"/>
+		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
+		<item value="529" key="DIALOG_HEIGHT"/>
+		<item value="330" key="DIALOG_X_ORIGIN"/>
+		<item value="22" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>
