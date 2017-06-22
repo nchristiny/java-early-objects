@@ -17,7 +17,7 @@ public class Cylinder {
     // declare and initialize the variables
     double area = 0, height = 0, radius = 0, volume = 0;
     String strName = "";
-    String name = "Ben";
+    // String name = "Ben";
     
     // greet the program user	
     System.out.println("Welcome to the Volume and Surface Area Program!");

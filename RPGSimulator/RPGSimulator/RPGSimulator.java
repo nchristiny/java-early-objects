@@ -22,7 +22,8 @@ public class RPGSimulator
 		char letter = '\0', role = '\0';
 
 		// initial health and treasures for the two players
-		int number = 0, mission = 0, health1 = 100, health2 = 100;
+		// Refactor unused variable assignment "mission"
+		int number = 0, health1 = 100, health2 = 100;
 		int treasure1 = 100, treasure2 = 100, encounter = 0;
 		// define your role
 		role = (char)(rand1.nextInt(26) + 'a');
@@ -42,14 +43,14 @@ public class RPGSimulator
 		System.out.print("your mission is: ");
 		switch(number)
 		{
-		case 1: System.out.println(mission1); mission = 1; break;
-		case 2: System.out.println(mission2); mission = 2; break;
-		case 3: System.out.println(mission3); mission = 3; break;
-		case 4: System.out.println(mission4); mission = 4; break;
-		case 5: System.out.println(mission5); mission = 5; break;
+		case 1: System.out.println(mission1); break;
+		case 2: System.out.println(mission2); break;
+		case 3: System.out.println(mission3); break;
+		case 4: System.out.println(mission4); break;
+		case 5: System.out.println(mission5); break;
 		// Add cases for new missions
-		case 6: System.out.println(mission6); mission = 6; break;
-		case 7: System.out.println(mission7); mission = 7; break;
+		case 6: System.out.println(mission6); break;
+		case 7: System.out.println(mission7); break;
 		}
 		System.out.println("");
 

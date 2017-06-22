@@ -20,7 +20,7 @@ public class Demos {
     public static void main(String[] args) throws java.io.IOException {
     String s1;
     String s2;
-    double num1, num2, product;
+    double num1;
     
     // declare a BufferedReader object to read from the keyboard
     BufferedReader br = 

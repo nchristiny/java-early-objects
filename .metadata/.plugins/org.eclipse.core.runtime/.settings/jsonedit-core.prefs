@@ -1,5 +1,5 @@
-defaultColor=208,208,208
+defaultColor=128,0,255
 eclipse.preferences.version=1
-nullColor=208,208,208
-stringColor=220,120,220
-valueColor=190,214,255
+nullColor=128,0,255
+stringColor=128,128,128
+valueColor=128,0,128

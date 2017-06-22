@@ -97,5 +97,6 @@ public class Invoices {
 		System.out.println(" ");
 		System.out.println("thank you!");
 		System.out.println("---------------------");
+		sc.close();
 	}
 }
