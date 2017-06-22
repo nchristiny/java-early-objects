@@ -7,9 +7,8 @@ public class Invoices {
 		int numItems = 0;
 		double itemPrice = 0.0, shipCharge = 0.0, totAmt = 0.0;
 		double discount = 0.02, subTotal = 0.0, discountAmount = 0.0;
-		char shipMethod = '\0';
-		char shippingChoice = '\0';
-		String shippingCompany = "", invDate = "";
+		String shipMethod; 
+		String shippingCompany ="", invDate, input_check;  // why are the last two OK to initialize without empty strings but shippingCompany isn't? 
 		boolean check = false;
 		Scanner sc = new Scanner(System.in);
 
@@ -44,57 +43,67 @@ public class Invoices {
 		System.out.printf("the per item price is: $%.2f\n", itemPrice);
 
 		// determine the shipping method
-		System.out.println("enter shipping method (A , B, C or F for free shipping)");
-		shipMethod = sc.next().charAt(0);
-
-		// determine the shipping charge
+		System.out.println("enter shipping method (1 for Federal Express, 2 for United Parcel Service, 3 for DHL, 4 for Amazon Prime FREE shipping or anything else for United States Postal Service.)");
+		shipMethod = sc.nextLine();
+		// Previously allowed user to enter a two digit number and still only took first digit. 
+		// Refactored to opt to default for anything longer than 1 digit
+		if (shipMethod.length() > 1)
+			shipMethod = "";
+		else 
+			shipMethod = sc.nextLine();
+		
 		switch(shipMethod) {
-		case 'A': case 'a': shipCharge = 5.00; break;
-		case 'B': case 'b': shipCharge = 7.20; break;
-		case 'C': case 'c': shipCharge = 10.00; break;
-		case 'F': case 'f': shipCharge = 0; break;
-		default:  shipCharge = 20.00;
+		case "1": {
+			shipCharge = 5.00; 
+			shippingCompany = "FedEx";
+			break;
 		}
-		System.out.printf("the shipping charge is: $%.2f\n" , shipCharge);
-		
-		// choose the shipping company
-		System.out.println("Enter shipping company: (1 for Federal Express, 2 for United Parcel Service, 3 for DHL, or anything else for United States Postal Service.)");
-		shippingChoice = sc.next().charAt(0);
-
-		// determine the shipping charge
-		switch(shippingChoice) {
-		case '1': shippingCompany = "FedEx"; break;
-		case '2': shippingCompany = "UPS"; break;
-		case '3': shippingCompany = "DHL"; break;
-		default: shippingCompany = "USPS";
+		case "2": {
+			shipCharge = 7.20;
+			shippingCompany = "UPS";
+			break;
 		}
-		System.out.printf("Your shipping company is: %s\n" , shippingCompany);
-
-		// System.out.print("check variable before choice: ");
-		// System.out.println(check);
+		case "3": {
+			shipCharge = 10.00;
+			shippingCompany = "DHL";
+			break;
+		}
+		case "4": {
+			shipCharge = 0;
+			shippingCompany = "Amazone Prime Free Delivery";
+			break;
+		}
+		default:  {
+			shipCharge = 20.00;
+			shippingCompany = "USPS";
+		}
+		}
+		System.out.printf("You have selected %s%nThe shipping charge is: $%.2f\n" , shippingCompany, shipCharge);
 		
-		// determine the days from invoice date to today's date
-		System.out.println("is discount period valid? true or false");
-		check = sc.nextBoolean();
+		// determine the discount validity
+		System.out.println("Is discount period valid? If so, enter either yes or true.");
+		// Refactored - increased robustness to accept more choices
+		input_check = sc.next().toLowerCase();
+		if (input_check.charAt(0) == 't' || input_check.charAt(0) == 'y')
+			check = true;	
+		else 
+			System.out.println("You did not save with a discount today!");
 		
-		// System.out.print("check variable after choice: ");
-		// System.out.println(check);
-
+		// determine subTotal
 		subTotal = numItems * itemPrice;
 		if (check) {
 			totAmt = subTotal * (1 - discount) + shipCharge;
 			discountAmount = subTotal * discount;
 			System.out.printf("You saved $%.2f today!\n", discountAmount);
-			}
+		}
 		else { 
-			System.out.println("You did not save on any discount today!");
 			totAmt = subTotal + shipCharge;
 		}
-		
-		System.out.printf("(total invoice amount due) $%.2f\n",totAmt);
+
+		System.out.printf("Total invoice amount due: $%.2f\n",totAmt);
 
 		// the program footer
-		System.out.println(" ");
+		System.out.println();
 		System.out.println("thank you!");
 		System.out.println("---------------------");
 		sc.close();

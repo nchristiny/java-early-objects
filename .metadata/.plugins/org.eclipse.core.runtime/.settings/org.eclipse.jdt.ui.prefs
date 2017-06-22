@@ -3,6 +3,7 @@ content_assist_favorite_static_members=
 content_assist_number_of_computers=19
 content_assist_proposals_background=255,255,255
 content_assist_proposals_foreground=0,0,0
+do_not_ask_to_install_user_dictionary=true
 eclipse.preferences.version=1
 fontPropagated=true
 formatter_profile=_CIS144
@@ -35,7 +36,7 @@ org.eclipse.jdt.ui.text.code_templates_migrated=true
 org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.text.templates_migrated=true
-org.eclipse.jface.textfont=1|Monaco|12.0|0|COCOA|1|Monaco;
+org.eclipse.jface.textfont=1|Inconsolata-dz|12.0|0|COCOA|1|Inconsolata-dz;
 pf_coloring_argument=0,0,255
 pf_coloring_assignment=128,0,255
 pf_coloring_comment=0,128,0
