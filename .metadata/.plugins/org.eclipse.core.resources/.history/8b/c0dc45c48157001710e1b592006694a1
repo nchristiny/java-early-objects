@@ -1,0 +1,72 @@
+// Fig. 2.15: Comparison.java
+// Compare integers using if statements, relational operators 
+// and equality operators.
+
+//import java.io.*;
+import java.util.*;
+
+public class Comparison 
+{
+   // main method begins execution of Java application
+   public static void main(String[] args)
+   {
+      // create Scanner to obtain input from command line
+	  Scanner br = new Scanner(System.in);
+
+      String str1; // first number to compare
+      String str2; // second number to compare
+      char chr, chrWhiteSpace = '\f';
+      Boolean isThisWhiteSpace;
+      
+      System.out.println("Enter first word: "); // prompt 
+      str1 = br.nextLine(); // read first number from user 
+
+      System.out.print("Enter second word: "); // prompt 
+      str2 = br.nextLine(); // read second number from user 
+      
+      if (str1.equals(str2)) {
+    	 System.out.println("True");
+         System.out.printf("%s == %s%n", str1, str2);
+      } else {
+    	  System.out.println("Strings not equal");
+      }
+      
+      // The form feed character is considered whitespace by the C character classification function
+      // In Java the escape sequence for it is \f and is used for page break delimiters
+      
+      System.out.print("Enter a single char: ");
+      chr = br.next().charAt(0);
+      
+      // TODO refactor following two conditionals into own method
+      isThisWhiteSpace = Character.isWhitespace(chr);
+      if (isThisWhiteSpace) {
+    	  System.out.printf("'%c' is a string literal or char of value whitespace\n", chr);
+      } else {
+    	  System.out.printf("'%c' is a string literal or char of value NOT whitespace\n", chr);
+      }
+      
+      isThisWhiteSpace = Character.isWhitespace(chrWhiteSpace);
+      if (isThisWhiteSpace) {
+    	  System.out.printf("'%c' is a string literal or char of value whitespace\n", chrWhiteSpace);
+      } else {
+    	  System.out.printf("'%c' is a string literal or char of value NOT whitespace\n", chrWhiteSpace);
+      }
+      
+      br.close();
+   } // end method main
+} // end class Comparison
+
+/**************************************************************************
+ * (C) Copyright 1992-2014 by Deitel & Associates, Inc. and               *
+ * Pearson Education, Inc. All Rights Reserved.                           *
+ *                                                                        *
+ * DISCLAIMER: The authors and publisher of this book have used their     *
+ * best efforts in preparing the book. These efforts include the          *
+ * development, research, and testing of the theories and programs        *
+ * to determine their effectiveness. The authors and publisher make       *
+ * no warranty of any kind, expressed or implied, with regard to these    *
+ * programs or to the documentation contained in these books. The authors *
+ * and publisher shall not be liable in any event for incidental or       *
+ * consequential damages in connection with, or arising out of, the       *
+ * furnishing, performance, or use of these programs.                     *
+ *************************************************************************/
