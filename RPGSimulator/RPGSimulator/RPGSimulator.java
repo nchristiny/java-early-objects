@@ -13,16 +13,17 @@ public class RPGSimulator
 		String mission3 = "Rescue the Princess";
 		String mission4 = "Traverse the Forest";
 		String mission5 = "Locate the Tunnel Entrance";
-		// Add two new missions
-		// TODO  Process takes changing data in many places, refactor
+		// Add new missions
+		// TODO  Process takes changing data in different places, refactor
 		String mission6 = "Drink All the Ale in the Tavern";
 		String mission7 = "Conquer the Seven Kingdoms";
+		String mission8 = "Infiltrate the Thieves Guild";
 		
 		String player1 = "", player2 = "";
 		char letter = '\0', role = '\0';
 		
 		// multiple games
-		// TODO Strings are expensive
+		// TODO Strings are expensive: consider Boolean when possible
 		Boolean playAgain = true;
 		String strPlayAgain;
 		Scanner sc = new Scanner(System.in);
@@ -46,7 +47,7 @@ public class RPGSimulator
 			}
 			System.out.println("you are the " + player1);
 			// define your mission
-			number = rand2.nextInt(7) + 1;
+			number = rand2.nextInt(8) + 1;
 			System.out.print("your mission is: ");
 			switch(number)
 			{
@@ -55,12 +56,25 @@ public class RPGSimulator
 			case 3: System.out.println(mission3); break;
 			case 4: System.out.println(mission4); break;
 			case 5: System.out.println(mission5); break;
-			// Add cases for new missions
+			// New missions - remember to increment variable number
 			case 6: System.out.println(mission6); break;
 			case 7: System.out.println(mission7); break;
+			case 8: System.out.println(mission8); break;
 			}
 			System.out.println("");
-
+			
+			// Add extra character to mission that helps both the players, game lasts longer
+			// TODO could make it so the NPC can have a random effect at each encounter
+			if (number == 8){
+				System.out.print("Your pal the Vermillion Rapscallion will\n\"assist\" both you and your opponent in this mission");
+				System.out.println("\nin the form of bonus health and treasure!");
+				System.out.println("");
+				health1 += 100;
+				health2 += 100;
+				treasure1 += 150;
+				treasure2 += 150;
+			}
+			
 			// let the game simulation commence (limit the # of encounters)
 			for (encounter = 1; encounter <= 20; encounter++)
 			{
@@ -117,7 +131,6 @@ public class RPGSimulator
 
 				if (health1 <= 0 || health2 <= 0 || treasure1 <= 0 || treasure2 <= 0)
 				{
-					// System.out.print("encounter: " + encounter + " action status: ");
 					break;
 				}
 
@@ -139,6 +152,7 @@ public class RPGSimulator
 			System.out.println("\t\t" + "health" + "\t" + "treasure");
 			System.out.println(player1 + "\t" + health1 + "\t" + treasure1);
 			System.out.println(player2 + "\t" + health2 + "\t" + treasure2);
+			// TODO Who won and who died of lack of health/treasure?
 			System.out.println("Play again? Y/N");
 			strPlayAgain = sc.next().toLowerCase();
 			if (strPlayAgain.charAt(0) == 'n') 
