@@ -63,16 +63,32 @@ public class RPGSimulator
 			}
 			System.out.println("");
 			
+			// Add "cloaking mode" to mission1
+			if (number == 1){
+				System.out.println("Luckily for this mission, you have donned a\nCloak of Concealment + Xtra HP.\n");
+				// if player1 is "protagonist" then add bonus to health1
+				// if player1 is "opponent" then add bonus to health2
+				if (player1 == "protagonist"){ 
+					System.out.println("Added 200 HP to " + player1);
+					health1 += 200;
+				}
+				else {
+					System.out.println("Added 200 HP to " + player1);
+					health2 += 200;
+				}
+				System.out.println("Have fun storming the castle!\n");
+			}
+			
 			// Add extra character to mission that helps both the players, game lasts longer
 			// TODO could make it so the NPC can have a random effect at each encounter
 			if (number == 8){
 				System.out.print("Your pal the Vermillion Rapscallion will\n\"assist\" both you and your opponent in this mission");
 				System.out.println("\nin the form of bonus health and treasure!");
 				System.out.println("");
-				health1 += 100;
-				health2 += 100;
-				treasure1 += 150;
-				treasure2 += 150;
+				health1 += 60;
+				health2 += 60;
+				treasure1 += 120;
+				treasure2 += 120;
 			}
 			
 			// let the game simulation commence (limit the # of encounters)
@@ -134,31 +150,37 @@ public class RPGSimulator
 					break;
 				}
 
-				// Add bonus health and treasure if survive 5 encounters
+				// Add bonus health and treasure if survive after 5 encounters
 				// Relocated to AFTER the death condition, in order to only award bonus only if encounter 5 is survived
 				if (encounter == 5) {
 					System.out.println("Congratulations! Bonus health and treasure \nreceived for surviving 5 encounters.");
 					System.out.println("");
-					health1 += 20;
-					health2 += 20;
-					treasure1 += 30;
-					treasure2 += 30;
+					health1 += 150;
+					health2 += 150;
+					treasure1 += 250;
+					treasure2 += 250;
 				}
-
+				
+				// Add congratulatory message if both players survive after 20 encounters
+				if (encounter == 20) {
+					System.out.println("You and your worthy opponent have stuggled\nmightily. You have both decided a disarmament pact\nis in order and agree to put down your weapons. \nYou both grow fat from your wealth and\nsettle down to make families.\nAs the years go on, the terrible conflict seems but\na distant memory. Eventually you find yourself\nin bed surrounded by warm, loving faces.\nYou die peacefully in your sleep.");
+				}
 			}
+			
 			System.out.println("*************** GAME OVER ************************\n");
 			System.out.println("simulation has ended\n");
 			System.out.println("results:\n");
 			System.out.println("\t\t" + "health" + "\t" + "treasure");
 			System.out.println(player1 + "\t" + health1 + "\t" + treasure1);
 			System.out.println(player2 + "\t" + health2 + "\t" + treasure2);
-			// TODO Who won and who died of lack of health/treasure?
+			// TODO Who won and who died of lack of health/treasure? 
+			// TODO Add mission dependent success and failure messages
 			System.out.println("Play again? Y/N");
 			strPlayAgain = sc.next().toLowerCase();
 			if (strPlayAgain.charAt(0) == 'n') 
 				playAgain = false;
 		}
-		System.out.println("Have fun storming the caslte!");
+		System.out.println("Farewell adventurer.");
 		sc.close();
 	}
 }
