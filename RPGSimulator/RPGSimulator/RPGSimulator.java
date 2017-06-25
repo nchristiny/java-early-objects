@@ -14,7 +14,7 @@ public class RPGSimulator
 		String mission4 = "Traverse the Forest";
 		String mission5 = "Locate the Tunnel Entrance";
 		// Add new missions
-		// TODO  Process takes changing data in different places, refactor
+		// TODO  Adding missions takes changing same data in different places, refactor
 		String mission6 = "Drink All the Ale in the Tavern";
 		String mission7 = "Conquer the Seven Kingdoms";
 		String mission8 = "Infiltrate the Thieves Guild";
@@ -22,7 +22,7 @@ public class RPGSimulator
 		String player1 = "", player2 = "";
 		char letter = '\0', role = '\0';
 		
-		// multiple games
+		// Multiple games option
 		// TODO Strings are expensive: consider Boolean when possible
 		Boolean playAgain = true;
 		String strPlayAgain;
@@ -146,7 +146,13 @@ public class RPGSimulator
 				treasure2 -= 5;
 
 				if (health1 <= 0 || health2 <= 0 || treasure1 <= 0 || treasure2 <= 0)
-				{
+				{	
+					if (health1 <= 0 || treasure1 <= 0) 
+						System.out.println("You have died from lack of health and/or treasure.");
+					else
+						// TODO it appears the odds are stacked against player2
+						// some game balance is needed
+						System.out.println("Player 2 has died from lack of health and/or treasure.");
 					break;
 				}
 
