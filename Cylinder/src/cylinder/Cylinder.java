@@ -38,7 +38,7 @@ public class Cylinder {
     // process: compute the required quantity
     volume = 3.1416 * radius * radius * height;
     // S  =  2 π r h  +  2 π r ^ 2     
-    area = 2 * 3.1416 * radius * height + 2 * 3.1416 * Math.pow(radius, 2);
+    area = 2 * 3.1416 * radius * height + 2 * 3.1416 * Math.pow(radius, 2.0);
             
     // output: display the output to the user
     System.out.print("The volume of the cylinder is: ");
