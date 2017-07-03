@@ -72,6 +72,37 @@ public class Demos {
 		System.out.printf("%s multiplied by %4.2f is %4.2f.%n",stringNum2, num1, product);
 		System.out.printf("%s divided by %4.2f is %4.7f.%n",stringNum2, num1, quotient);
 		output = String.format("Just used Double.toString() method to convert %4.1f from Double to String.%nHere it is: %s", num2, stringNum2);
-		System.out.printf("%s < assigned the preceding lines to a String variable and displated it using printf()!", output);
-	}
+		System.out.printf("%s < assigned the preceding lines to a String variable and displayed it using printf()!%n", output);
+		System.out.println();
+
+		// scratch
+		int x = 11;
+		int count = 1;
+		do
+		{
+			System.out.println("Loop count: " + count);
+			x += 20;
+			++count;
+		} while (x <= 100);
+		System.out.println();
+
+		// more scratch
+		for (int counts = 10; counts <= 21; counts++)
+			System.out.println("Java rules! " + counts);
+		System.out.println();
+
+		// Comparison Strings
+		String str1 = "Awesome";
+		String str2 = "Awesome";
+		String str3 = new String("Awesome");
+		System.out.println("str1 = \"Awesome\"\nstr2 = \"Awesome\"\nstr3 = new String(\"Awesome\")");
+		if (str1 == str2)  //  Will return true since memory location referenced is equal, HOWEVER the Strings may not be identical. Explanation http://www.zparacha.com/java-string-comparison/
+			System.out.println("String references ONLY are equal by comparing str1 == str2");
+		if (str1 != str3)  //  Memory location referenced is not equal
+			System.out.println("String comparison is NOT found by str1 == str3, since str3 memory reference is distinct");
+		if (str1.equals(str3))  // Equals method compares the text content or the true value of two string variables
+			System.out.println("Strings are identical by str1.equals(str3)");
+		if (str1.compareTo(str3) == 0) // compareTo method compares the content or value of two string variables as well, returns 0 for identical, 1 for not identical
+			System.out.println("Strings are identical by str1.compareTo(str3) == 0");
+	}	
 }
