@@ -23,5 +23,7 @@ public class SimpleAverage
 		
 		//  %,.3f format specifier for example 9,999,999.999
 		System.out.printf("The average of %,.2f and %,.2f is %,.3f", num1 , num2, (num1 + num2) / 2);
+		
+		input.close();
 	}
 }
