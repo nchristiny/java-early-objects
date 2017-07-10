@@ -1,7 +1,7 @@
 /**
  * A Retail Gift Card Application using multiple Java classes
  */
-import java.text.DateFormat;
+//  import java.text.DateFormat;  not used in favor of SimpleDateFormat
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,7 +45,7 @@ public class GiftCards {
 		System.out.println(" Today's Date is: " + dtToday.format(myDate));
 		System.out.printf(" Card Holder . . . %s%n", holder);
 		System.out.printf(" Card Number . . . %d%n", cardNum);
-		System.out.printf(" Card Amount . . . $%.2f%n", balance);
+		System.out.printf(" Card Amount . . . $%,.2f%n", balance);
 		System.out.printf(" Expires . . . %d%n", expires);
 		System.out.printf(" Card Type . . . %c%n", cardType);
 	}
@@ -66,13 +66,23 @@ public class GiftCards {
 		holder = h;
 	}
 	
-	// TODO DONE Set expiration date 
+	// Get expiration 
+	public int  getExpiration() 
+	{
+		return expires;
+	}
+	// Set expiration date 
 	public void setExpiration(int year) 
 	{
 		expires = year;
 	}
 	
-	// TODO Set Card type
+	// Get card type
+	public char getCardType()
+	{
+		return cardType;
+	}
+	// Set Card type
 	public void setCardType(char c) 
 	{
 		cardType = c;
@@ -81,7 +91,7 @@ public class GiftCards {
 	public void printCurrentGiftCardInfo(double spend) 
 	{	
 		if (year > expires) {
-			// Short-circuit overdraw with expiration date first 
+			// Short-circuit overdraw with expiration date  
 			System.out.println("\nWhoops, this card is expired, sorry.");
 		} else if (spend < 0.0) {
 			// Check for negative value withdrawals
@@ -93,8 +103,8 @@ public class GiftCards {
 			System.out.println("");
 			System.out.println(" Card Balance");
 			System.out.println(" Today's Date is: " + dtToday.format(myDate));
-			System.out.printf(" Deducted . . . $%.2f%n", spend);
-			System.out.printf(" Card Amount . . . $%.2f%n", balance - spend);
+			System.out.printf(" Deducted . . . $%,.2f%n", spend);
+			System.out.printf(" Card Amount . . . $%,.2f%n", balance - spend);
 		}
 	}
 

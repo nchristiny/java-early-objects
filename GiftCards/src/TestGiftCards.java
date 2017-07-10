@@ -50,11 +50,8 @@ public class TestGiftCards {
 		str = 
 				JOptionPane.showInputDialog(null, "deduct amount from card : ");
 		useCard = Double.parseDouble(str);
-
-		// verify amount to deduct will not yield negative balance
-		// Shouldn't the Object be responsible for checking a negative balance? 
-		// Ans: Yes, only object should know about itself, information hiding
 		
+		// Delegate responsibility for balance check to class instance of GiftCards
 		// print current card balance
 		gc.printCurrentGiftCardInfo(useCard);
 	}
