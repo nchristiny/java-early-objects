@@ -6,17 +6,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
-//import java.time.LocalDate;
+
 /**
  * @author Nick Christiny
  *
  */
 public class GiftCards {
+	// TODO look into NumberFormat class
 	static NumberFormat nf = NumberFormat.getCurrencyInstance();
 	Date myDate = new Date();
 	String myDateFormat = "MM/dd/yyyy";
 	SimpleDateFormat dtToday = new SimpleDateFormat(myDateFormat);
-	
+
 	Instant instant = myDate.toInstant();
 	String today = instant.toString();
 
@@ -74,7 +75,7 @@ public class GiftCards {
 	{
 		return expires;
 	}
-	
+
 	// Set expiration date 
 	public void setExpiration(String expiry) 
 	{
@@ -91,7 +92,7 @@ public class GiftCards {
 	{
 		return cardType;
 	}
-	
+
 	// Set Card type
 	public void setCardType(char c) 
 	{
