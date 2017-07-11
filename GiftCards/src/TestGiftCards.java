@@ -1,7 +1,6 @@
 /**
  * Runner for GiftCards Java class
  */
-
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +13,8 @@ public class TestGiftCards {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		GiftCards gc = new GiftCards("", 0.0, 0, 'R');
+
+		GiftCards gc = new GiftCards("", 0.0, "", 'R');
 
 		// display opening message
 		String message = "welcome";
@@ -34,9 +34,9 @@ public class TestGiftCards {
 		str = JOptionPane.showInputDialog(null, "gift card amount : ");
 		gc.setBalance(Double.parseDouble(str));
 		
-		// set the gift card expiration year
-		str = JOptionPane.showInputDialog(null, "gift card exipration year : ");
-		gc.setExpiration(Integer.parseInt(str));
+		// set the gift card expiration date
+		str = JOptionPane.showInputDialog(null, "gift card exipration date MM/dd/yyyy : ");
+		gc.setExpiration(str);
 		
 		// set the gift card type 
 		str = JOptionPane.showInputDialog(null, "gift card type (S for Store Credit, R for regular) : ");
@@ -52,6 +52,7 @@ public class TestGiftCards {
 		useCard = Double.parseDouble(str);
 		
 		// Delegate responsibility for balance check to class instance of GiftCards
+		
 		// print current card balance
 		gc.printCurrentGiftCardInfo(useCard);
 	}
