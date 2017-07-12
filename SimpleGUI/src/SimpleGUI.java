@@ -23,17 +23,17 @@ public class SimpleGUI extends JFrame implements ActionListener
 
 	SimpleGUI() 
 	{
-		l1 = new JLabel(" Current Salary");
-		l2 = new JLabel(" Percent Rate");
-		l3 = new JLabel(" New Salary");
+		l1 = new JLabel(" Current Salary ($)");
+		l2 = new JLabel(" Percent Rate (%)");
+		l3 = new JLabel(" New Salary ($)");
 		b1 = new JButton("COMPUTE");
 		
 		// Instantiate button b2 and label
 		b2 = new JButton("EXIT");
 		// Instantiate check1, l4 and label, and l5 text field
 		l4 = new JLabel("  ");
-		l5 = new JLabel(" Difference");
-		check1 = new JCheckBox("bonus pay");
+		l5 = new JLabel(" Difference ($)");
+		check1 = new JCheckBox("Bonus Pay");
 		check1.setSelected(true);
 
 		t1 = new JTextField(10);
@@ -72,7 +72,7 @@ public class SimpleGUI extends JFrame implements ActionListener
 		// Add row for checkbox
 		setLayout(new GridLayout(6,2));
 		
-		setTitle("Simple Java GUI");
+		setTitle("Salary Calculator");
 	}
 
 	public void actionPerformed(ActionEvent ae)
