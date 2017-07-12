@@ -13,11 +13,11 @@ import javax.swing.*;
 public class SimpleGUI extends JFrame implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
-	// Add label l4
-	JLabel l1, l2, l3, l4;
+	// Add label l4, l5
+	JLabel l1, l2, l3, l4, l5;
 	// Add button b2
 	JButton b1, b2; 
-	JTextField t1, t2, t3;
+	JTextField t1, t2, t3, t4;
 	// Add checkbox
 	JCheckBox check1;
 
@@ -30,14 +30,18 @@ public class SimpleGUI extends JFrame implements ActionListener
 		
 		// Instantiate button b2 and label
 		b2 = new JButton("EXIT");
-		// Instantiate check1 checkbox l4 and label
+		// Instantiate check1, l4 and label, and l5 text field
 		l4 = new JLabel("  ");
+		l5 = new JLabel(" Difference");
 		check1 = new JCheckBox("bonus pay");
 		check1.setSelected(true);
 
 		t1 = new JTextField(10);
 		t2 = new JTextField(10);
 		t3 = new JTextField(10);
+		
+		// Add text field for difference
+		t4 = new JTextField(10);
 
 		add(l1);
 		add(t1);
@@ -49,6 +53,10 @@ public class SimpleGUI extends JFrame implements ActionListener
 		// Insert checkbox
 		add(check1);
 		add(l4);
+		
+		// Insert difference label and textfield
+		add(l5);
+		add(t4);
 
 		add(b1);
 		b1.addActionListener(this);
@@ -62,7 +70,7 @@ public class SimpleGUI extends JFrame implements ActionListener
 		setSize(500,300);
 		
 		// Add row for checkbox
-		setLayout(new GridLayout(5,2));
+		setLayout(new GridLayout(6,2));
 		
 		setTitle("Simple Java GUI");
 	}
@@ -81,11 +89,8 @@ public class SimpleGUI extends JFrame implements ActionListener
 				// Add bonus pay
 				c += 500;
 			} 
-			else 
-			{
-				// Do nothing  - can eliminate 
-			}
 			t3.setText(String.valueOf(c));
+			t4.setText(String.valueOf(c - a));
 		} 
 	}
 
