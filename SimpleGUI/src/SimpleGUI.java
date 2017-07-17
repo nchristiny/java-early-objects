@@ -15,7 +15,7 @@ import java.text.NumberFormat;
 public class SimpleGUI extends JFrame implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
-	
+	// Default locale en-US
 	NumberFormat usdCostFormat = NumberFormat.getCurrencyInstance();
 
 	// Add label l4, l5
@@ -99,13 +99,11 @@ public class SimpleGUI extends JFrame implements ActionListener
 				bonus = new BigDecimal("500");
 				t3.setText(String.valueOf(usdCostFormat.format(subTotal.add(bonus))));
 				difference = subTotal.add(bonus).subtract(basePay);
-				t4.setText(String.valueOf(usdCostFormat.format(difference)));
-
 			} else {
 				t3.setText(String.valueOf(usdCostFormat.format(subTotal)));
 				difference = subTotal.subtract(basePay);
-				t4.setText(String.valueOf(usdCostFormat.format(difference)));
 			}
+			t4.setText(String.valueOf(usdCostFormat.format(difference)));
 		} 
 	}
 
