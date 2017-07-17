@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 
 /**
  * @author Nick Christiny
@@ -14,6 +15,9 @@ import java.math.BigDecimal;
 public class SimpleGUI extends JFrame implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
+	
+	NumberFormat usdCostFormat = NumberFormat.getCurrencyInstance();
+
 	// Add label l4, l5
 	JLabel l1, l2, l3, l4, l5;
 	// Add button b2
@@ -26,14 +30,14 @@ public class SimpleGUI extends JFrame implements ActionListener
 	{
 		l1 = new JLabel(" Current Salary ($)");
 		l2 = new JLabel(" Percent Rate (%)");
-		l3 = new JLabel(" New Salary ($)");
+		l3 = new JLabel(" New Salary");
 		b1 = new JButton("COMPUTE");
 		
 		// Instantiate button b2 and label
 		b2 = new JButton("EXIT");
 		// Instantiate check1, l4 and label, and l5 text field
 		l4 = new JLabel("  ");
-		l5 = new JLabel(" Difference ($)");
+		l5 = new JLabel(" Difference");
 		check1 = new JCheckBox("Bonus Pay");
 		check1.setSelected(true);
 
@@ -78,26 +82,30 @@ public class SimpleGUI extends JFrame implements ActionListener
 
 	public void actionPerformed(ActionEvent ae)
 	{
-		// Float and currency don't mix
-		//		float a, b, c;
+		// Floats and currency don't mix, use BigDecimal
 		BigDecimal basePay, perCentInterest, subTotal, difference, bonus;
 		
 		if(ae.getSource() == b1)
 		{
 			basePay = new BigDecimal(t1.getText());
 			perCentInterest = new BigDecimal(t2.getText());
-			// Percentage calculation 
-			subTotal = basePay.add(basePay.multiply(perCentInterest));
+			BigDecimal oneHundred = new BigDecimal("100");
+			// Percentage calculation 			
+			subTotal = basePay.add(basePay.multiply(perCentInterest.divide(oneHundred)));
+			
 			if (check1.isSelected()) 
 			{
 				// Add bonus pay
 				bonus = new BigDecimal("500");
-				subTotal.add(bonus);
-			} 
-			t3.setText(String.valueOf(subTotal));
+				t3.setText(String.valueOf(usdCostFormat.format(subTotal.add(bonus))));
+				difference = subTotal.add(bonus).subtract(basePay);
+				t4.setText(String.valueOf(usdCostFormat.format(difference)));
 
-			difference = subTotal.subtract(basePay);
-			t4.setText(String.valueOf(difference));
+			} else {
+				t3.setText(String.valueOf(usdCostFormat.format(subTotal)));
+				difference = subTotal.subtract(basePay);
+				t4.setText(String.valueOf(usdCostFormat.format(difference)));
+			}
 		} 
 	}
 
