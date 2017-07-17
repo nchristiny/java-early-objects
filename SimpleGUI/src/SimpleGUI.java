@@ -4,6 +4,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.math.BigDecimal;
 
 /**
  * @author Nick Christiny
@@ -77,20 +78,26 @@ public class SimpleGUI extends JFrame implements ActionListener
 
 	public void actionPerformed(ActionEvent ae)
 	{
-		float a, b, c;
+		// Float and currency don't mix
+		//		float a, b, c;
+		BigDecimal basePay, perCentInterest, subTotal, difference, bonus;
+		
 		if(ae.getSource() == b1)
 		{
-			a = Float.parseFloat(t1.getText());
-			b = Float.parseFloat(t2.getText());
-			// Add percentage calculation 
-			c = a + (a * b / 100);
+			basePay = new BigDecimal(t1.getText());
+			perCentInterest = new BigDecimal(t2.getText());
+			// Percentage calculation 
+			subTotal = basePay.add(basePay.multiply(perCentInterest));
 			if (check1.isSelected()) 
 			{
 				// Add bonus pay
-				c += 500;
+				bonus = new BigDecimal("500");
+				subTotal.add(bonus);
 			} 
-			t3.setText(String.valueOf(c));
-			t4.setText(String.valueOf(c - a));
+			t3.setText(String.valueOf(subTotal));
+
+			difference = subTotal.subtract(basePay);
+			t4.setText(String.valueOf(difference));
 		} 
 	}
 
