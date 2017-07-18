@@ -16,6 +16,8 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 	/**
 	 * @param args
 	 */
+	// TODO add image to JPanel
+	// TODO add exception handling for t1 text field
 	private static final long serialVersionUID = 1L;
 	NumberFormat usdCostFormat = NumberFormat.getCurrencyInstance();
 
@@ -77,6 +79,7 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 		setSize(500,300);
 		setLayout(new GridLayout(8,2));
 		setTitle("Coffee Machine");
+
 		// create the menu bar
 		JMenuBar menuBar = new JMenuBar();
 		add(menuBar);	
@@ -112,10 +115,10 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 	}
 	public void actionPerformed(ActionEvent ae)
 	{
-		BigDecimal price = new BigDecimal("0.99");
-		BigDecimal upsize = new BigDecimal("1.99");
-		BigDecimal upsize2 = new BigDecimal("2.99");
-		BigDecimal extra = new BigDecimal("0.99");
+		BigDecimal price = new BigDecimal("1.99");
+		BigDecimal upsize = new BigDecimal("2.99");
+		BigDecimal upsize2 = new BigDecimal("3.99");
+		BigDecimal extra = new BigDecimal("0.65");
 		String a = "", message = ""; 
 		if (small.isSelected() == true) 
 		{
@@ -153,7 +156,7 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 		if (espresso.isSelected() == true) 
 		{
 			// perform a task ...
-			a += "with espresso shot";
+			a += "and an espresso shot";
 			price = price.add(extra);
 		} 
 
