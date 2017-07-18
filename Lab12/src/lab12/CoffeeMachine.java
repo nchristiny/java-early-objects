@@ -1,10 +1,12 @@
 /**
- * Java Jim’s Coffee Shoppe program using Java Graphical User Interface ( GUI ) components
+ * Program using Java Graphical User Interface ( GUI ) components
  */
 package lab12;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 
 /**
  * @author Nick Christiny
@@ -15,6 +17,8 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 	 * @param args
 	 */
 	private static final long serialVersionUID = 1L;
+	NumberFormat usdCostFormat = NumberFormat.getCurrencyInstance();
+	
 	JLabel l1, l2, l3, l4, l5, l6;
 	JButton b1, b2;
 	JTextField t1, t2, t3;
@@ -69,36 +73,50 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 	}
 	public void actionPerformed(ActionEvent ae)
 	{
-		float price = 0;
+		BigDecimal price = new BigDecimal("2.99");
+		BigDecimal upsize = new BigDecimal("1.99");
+		BigDecimal extra = new BigDecimal("0.99");
 		String a = "", message = ""; 
-		if (cream.isSelected() == true) 
-		{
-			// perform a task ...
-		} 
-		if (raw.isSelected() == true) 
-		{
-			// perform a task ...
-		} 
-		if (espresso.isSelected() == true) 
-		{
-			// perform a task ...
-		} 
 		if (small.isSelected() == true) 
 		{
 			System.out.println("small");
 			// perform a task ...
+			a = "Small coffee\n";
 		}
 		if (large.isSelected() == true) 
 		{
 			System.out.println("large");
 			// perform a task ...
+			a = "Large coffee\n";
+			price = price.add(upsize);
 		}
+
+		if (cream.isSelected() == true) 
+		{
+			// perform a task ...
+			a += "with cream ";
+			price = price.add(extra);
+		} 
+		if (raw.isSelected() == true) 
+		{
+			// perform a task ...
+			a += "with raw sugar ";
+			price = price.add(extra);
+		} 
+		if (espresso.isSelected() == true) 
+		{
+			// perform a task ...
+			a += "with espresso shot";
+			price = price.add(extra);
+		} 
+//		System.out.println(a);
+
 
 		if(ae.getSource() == b1)
 		{
-			a = t1.getText();
-			message = "your order: " + a + " $" + price;
-			t2.setText("thank you: " + a );
+			String name = t1.getText();
+			message = "Hello " + name + "! Enjoy your beverage!\nyour order: " + a + "\nTotal Purchase: " + String.valueOf(usdCostFormat.format(price));
+			t2.setText("thank you: " + price );
 		}
 		JOptionPane.showMessageDialog(null, "Summary: \n" + message, 
 				"Order Summary", JOptionPane.PLAIN_MESSAGE);
