@@ -32,7 +32,7 @@ public class SimpleGUI extends JFrame implements ActionListener
 		l2 = new JLabel(" Percent Rate (%)");
 		l3 = new JLabel(" New Salary");
 		b1 = new JButton("COMPUTE");
-		
+
 		// Instantiate button b2 and label
 		b2 = new JButton("EXIT");
 		// Instantiate check1, l4 and label, and l5 text field
@@ -44,7 +44,7 @@ public class SimpleGUI extends JFrame implements ActionListener
 		t1 = new JTextField(10);
 		t2 = new JTextField(10);
 		t3 = new JTextField(10);
-		
+
 		// Add text field for difference
 		t4 = new JTextField(10);
 
@@ -54,11 +54,11 @@ public class SimpleGUI extends JFrame implements ActionListener
 		add(t2);
 		add(l3);
 		add(t3);
-		
+
 		// Insert checkbox
 		add(check1);
 		add(l4);
-		
+
 		// Insert difference label and textfield
 		add(l5);
 		add(t4);
@@ -68,15 +68,15 @@ public class SimpleGUI extends JFrame implements ActionListener
 
 		// Add new instance of button b2
 		add(b2);
-		
+
 		// Add button b2 event listener and action
 		b2.addActionListener(e -> System.exit(0));
-		
+
 		setSize(500,300);
-		
+
 		// Add row for checkbox
 		setLayout(new GridLayout(6,2));
-		
+
 		setTitle("Salary Calculator");
 	}
 
@@ -84,7 +84,7 @@ public class SimpleGUI extends JFrame implements ActionListener
 	{
 		// Floats and currency don't mix, use BigDecimal
 		BigDecimal basePay, perCentInterest, subTotal, difference, bonus;
-		
+
 		if(ae.getSource() == b1)
 		{
 			basePay = new BigDecimal(t1.getText());
@@ -92,7 +92,7 @@ public class SimpleGUI extends JFrame implements ActionListener
 			BigDecimal oneHundred = new BigDecimal("100");
 			// Percentage calculation 			
 			subTotal = basePay.add(basePay.multiply(perCentInterest.divide(oneHundred)));
-			
+
 			if (check1.isSelected()) 
 			{
 				// Add bonus pay
