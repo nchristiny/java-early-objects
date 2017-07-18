@@ -18,12 +18,13 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 	NumberFormat usdCostFormat = NumberFormat.getCurrencyInstance();
-	
-	JLabel l1, l2, l3, l4, l5, l6;
+
+	JLabel l1, l2, l3, l4, l5, l6, l7;
 	JButton b1, b2;
 	JTextField t1, t2, t3;
 	JCheckBox cream, raw, espresso; 
 	private JRadioButton small;
+	private JRadioButton medium;
 	private JRadioButton large;
 	private ButtonGroup group;
 
@@ -35,6 +36,7 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 		l4 = new JLabel("  ");
 		l5 = new JLabel("  ");
 		l6 = new JLabel("  ");
+		l7 = new JLabel("  ");
 
 		b1 = new JButton("COMPUTE");
 		b2 = new JButton("EXIT");
@@ -44,37 +46,75 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 
 		small = new JRadioButton("small", true);
 		large = new JRadioButton("large", false);
+		medium = new JRadioButton("medium", false);
 		group = new ButtonGroup();
 		group.add(small);
 		group.add(large);
+		group.add(medium);
 
 		cream = new JCheckBox("cream", false);
 		raw = new JCheckBox("raw sugar", false);
 		espresso = new JCheckBox("espresso shot", false);
 		add(l1);
-		add(t1);
+		add(t1);	
 		add(small);
 		add(cream);
-		add(large);
+		add(medium);
 		add(raw);
-		add(l3);
+		add(large);
 		add(espresso);
+		add(l3);
+		add(l7);
 		add(l2);
 		add(t2);
 		add(l5);
 		add(l6);
 		add(b1);
 		add(b2);
+
 		b1.addActionListener(this);
 		b2.addActionListener(e -> System.exit(0));
 		setSize(500,300);
-		setLayout(new GridLayout(7,2));
+		setLayout(new GridLayout(8,2));
 		setTitle("Coffee Machine");
+		// create the menu bar
+		JMenuBar menuBar = new JMenuBar();
+		add(menuBar);	
+
+		// add the File menu
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+
+		// add a File menu item
+		JMenuItem mntmExit = new JMenuItem("Exit");
+		mnFile.add(mntmExit);
+
+		// add the Help menu
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+
+		// add a Help menu item
+		JMenuItem mntmAbout = new JMenuItem("About");   
+		mnHelp.add(mntmAbout);
+
+		// display the menu bar on the frame
+		setJMenuBar(menuBar);
+
+		mntmExit.addActionListener(e -> System.exit(0));
+
+		mntmAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0)
+			{
+				JOptionPane.showMessageDialog(null, "Developed by Nick Christiny.\nIn association with CIS 144 Lab productions.\nJuly 17, 2017\nVersion: " + serialVersionUID, 
+						"About", JOptionPane.PLAIN_MESSAGE);
+			}
+		});
 	}
 	public void actionPerformed(ActionEvent ae)
 	{
-		BigDecimal price = new BigDecimal("2.99");
+		BigDecimal price = new BigDecimal("0.99");
 		BigDecimal upsize = new BigDecimal("1.99");
+		BigDecimal upsize2 = new BigDecimal("2.99");
 		BigDecimal extra = new BigDecimal("0.99");
 		String a = "", message = ""; 
 		if (small.isSelected() == true) 
@@ -83,12 +123,19 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 			// perform a task ...
 			a = "Small coffee\n";
 		}
+		if (medium.isSelected() == true) 
+		{
+			System.out.println("large");
+			// perform a task ...
+			a = "Medium coffee\n";
+			price = price.add(upsize);
+		}
 		if (large.isSelected() == true) 
 		{
 			System.out.println("large");
 			// perform a task ...
 			a = "Large coffee\n";
-			price = price.add(upsize);
+			price = price.add(upsize2);
 		}
 
 		if (cream.isSelected() == true) 
@@ -109,14 +156,12 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 			a += "with espresso shot";
 			price = price.add(extra);
 		} 
-//		System.out.println(a);
-
 
 		if(ae.getSource() == b1)
 		{
 			String name = t1.getText();
 			message = "Hello " + name + "! Enjoy your beverage!\nyour order: " + a + "\nTotal Purchase: " + String.valueOf(usdCostFormat.format(price));
-			t2.setText("thank you: " + price );
+			t2.setText("thank you: " + String.valueOf(usdCostFormat.format(price)));
 		}
 		JOptionPane.showMessageDialog(null, "Summary: \n" + message, 
 				"Order Summary", JOptionPane.PLAIN_MESSAGE);
