@@ -17,7 +17,6 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 	 * @param args
 	 */
 	// TODO add image to JPanel
-	// TODO add exception handling for t1 text field
 	private static final long serialVersionUID = 1L;
 	NumberFormat usdCostFormat = NumberFormat.getCurrencyInstance();
 
@@ -128,7 +127,7 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 		}
 		if (medium.isSelected() == true) 
 		{
-			System.out.println("large");
+			System.out.println("medium");
 			// perform a task ...
 			a = "Medium coffee\n";
 			price = price.add(upsize);
@@ -163,8 +162,29 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 		if(ae.getSource() == b1)
 		{
 			String name = t1.getText();
-			message = "Hello " + name + "! Enjoy your beverage!\nyour order: " + a + "\nTotal Purchase: " + String.valueOf(usdCostFormat.format(price));
-			t2.setText("thank you: " + String.valueOf(usdCostFormat.format(price)));
+			if (!name.equals(""))
+			{
+				for(int i = 0; i < name.length(); ++i)
+				{
+					if (Character.isDigit(name.charAt(i))) 
+					{
+						System.out.println("digit in name");	
+						message = "There is a number in your name!\nFor some reason, our system doesn't like that.\nPlease try again.";
+						t2.setText("Please try again.");
+						break;
+					} 
+					else 
+					{
+						message = "Hello " + name + "! Enjoy your beverage!\nyour order: " + a + "\nTotal Purchase: " + String.valueOf(usdCostFormat.format(price));
+						t2.setText("thank you: " + String.valueOf(usdCostFormat.format(price)));
+					}
+				}
+			} 
+			else
+			{
+				message = "Hello valued guest! Enjoy your beverage!\nyour order: " + a + "\nTotal Purchase: " + String.valueOf(usdCostFormat.format(price));
+				t2.setText("thank you: " + String.valueOf(usdCostFormat.format(price)));	
+			}
 		}
 		JOptionPane.showMessageDialog(null, "Summary: \n" + message, 
 				"Order Summary", JOptionPane.PLAIN_MESSAGE);
