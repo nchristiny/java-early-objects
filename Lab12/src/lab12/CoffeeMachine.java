@@ -16,11 +16,11 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 	/**
 	 * @param args
 	 */
-	// TODO add image to JPanel
-	private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = 2L;
 	NumberFormat usdCostFormat = NumberFormat.getCurrencyInstance();
 
-	JLabel l1, l2, l3, l4, l5, l6, l7;
+	JLabel l1, l2, l3, l4, l5, l6, l7, labelImage;
 	JButton b1, b2;
 	JTextField t1, t2, t3;
 	JCheckBox cream, raw, espresso; 
@@ -28,7 +28,8 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 	private JRadioButton medium;
 	private JRadioButton large;
 	private ButtonGroup group;
-
+	ImageIcon image = new ImageIcon("src/lab12/animated-gifs-coffee-159.gif", null);
+	
 	CoffeeMachine() 
 	{
 		l1 = new JLabel(" Customer Name");
@@ -38,6 +39,7 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 		l5 = new JLabel("  ");
 		l6 = new JLabel("  ");
 		l7 = new JLabel("  ");
+		labelImage = new JLabel(image, JLabel.CENTER);
 
 		b1 = new JButton("COMPUTE");
 		b2 = new JButton("EXIT");
@@ -72,13 +74,17 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 		add(l6);
 		add(b1);
 		add(b2);
-
+		
+		add(labelImage, BorderLayout.CENTER);
+		
 		b1.addActionListener(this);
 		b2.addActionListener(e -> System.exit(0));
-		setSize(500,300);
-		setLayout(new GridLayout(8,2));
-		setTitle("Coffee Machine");
 
+		setSize(500,300);
+
+		setLayout(new GridLayout(9,2));
+		setTitle("Coffee Machine");
+		
 		// create the menu bar
 		JMenuBar menuBar = new JMenuBar();
 		add(menuBar);	
