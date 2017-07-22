@@ -16,7 +16,7 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 	/**
 	 * @param args
 	 */
-	
+
 	private static final long serialVersionUID = 2L;
 	NumberFormat usdCostFormat = NumberFormat.getCurrencyInstance();
 
@@ -29,7 +29,7 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 	private JRadioButton large;
 	private ButtonGroup group;
 	ImageIcon image = new ImageIcon("src/lab12/animated-gifs-coffee-159.gif", null);
-	
+
 	CoffeeMachine() 
 	{
 		l1 = new JLabel(" Customer Name");
@@ -74,9 +74,9 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 		add(l6);
 		add(b1);
 		add(b2);
-		
+
 		add(labelImage, BorderLayout.CENTER);
-		
+
 		b1.addActionListener(this);
 		b2.addActionListener(e -> System.exit(0));
 
@@ -84,7 +84,7 @@ public class CoffeeMachine extends JFrame implements ActionListener {
 
 		setLayout(new GridLayout(9,2));
 		setTitle("Coffee Machine");
-		
+
 		// create the menu bar
 		JMenuBar menuBar = new JMenuBar();
 		add(menuBar);	
