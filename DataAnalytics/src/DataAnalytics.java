@@ -8,12 +8,14 @@ import java.util.Scanner;
  * @author Nick Christiny
  *
  */
-public class DataAnalytics {
+public class DataAnalytics 
+{
 
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		// declare an object to receive the data
 		Scanner scan = new Scanner(System.in);
 		// declare an array list to hold the data
@@ -64,6 +66,8 @@ public class DataAnalytics {
 			BubbleSort(list);
 			System.out.println("Display sorted");
 			DisplayData(list);
+			MaxMin(list);
+			Average(list);
 		}
 		catch(Exception e)
 		{
@@ -72,12 +76,14 @@ public class DataAnalytics {
 		}
 
 	}
+	
 	public static void DisplayData(ArrayList<Integer> num)
 	{
 		for (int i = 0 ;i < num.size(); i++){
 			System.out.println(num.get(i).toString());
 		}
 	}
+	
 	public static void BubbleSort(ArrayList<Integer> num)
 	{
 		int j = 0;
@@ -99,6 +105,30 @@ public class DataAnalytics {
 			} 
 		} 
 	} 
-
+	
+	public static void MaxMin(ArrayList<Integer> num)
+	{
+		int length = num.size();
+		int max = num.get(length - 1);
+		int min = num.get(0);
+		System.out.println("The Max is:  " + max + "\nThe Min is: " + min);
+	}
+	
+	public static void Average(ArrayList<Integer> num) 
+	{
+		int length = num.size();
+		int total = 0;
+		for (int i = 0; i < length; i++)
+		{
+			total += num.get(i);
+		}
+		double average = (double) total / length; 
+		System.out.println("\nAverage: " + average);
+	}
+	
+	public static void PerfectSquares(ArrayList<Integer> num)
+	{
+		// TODO Find perfect squares in ArrayList
+	}
 }
 
