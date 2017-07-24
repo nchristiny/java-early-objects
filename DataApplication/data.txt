@@ -1,0 +1,6 @@
+ID,LName,Fee,Specialty  
+101,Roberts,3500,Media
+102,Peters,2700,Accounting
+103,Paul,1600,Media
+104,Michael,2300,Web Design
+105,Manfred,3500,Broadcasting
