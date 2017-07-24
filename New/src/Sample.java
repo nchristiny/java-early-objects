@@ -27,7 +27,6 @@ public class Sample {
 		JOptionPane.showMessageDialog(null, " The total due is $"
 				+ twoDecimal.format(grandtotal), "Result",
 				JOptionPane.PLAIN_MESSAGE);
-
 		System.exit(0);
 	}
 }
