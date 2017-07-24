@@ -68,6 +68,7 @@ public class DataAnalytics
 			DisplayData(list);
 			MaxMin(list);
 			Average(list);
+			PerfectSquares(list);
 		}
 		catch(Exception e)
 		{
@@ -76,14 +77,14 @@ public class DataAnalytics
 		}
 
 	}
-	
+
 	public static void DisplayData(ArrayList<Integer> num)
 	{
 		for (int i = 0 ;i < num.size(); i++){
 			System.out.println(num.get(i).toString());
 		}
 	}
-	
+
 	public static void BubbleSort(ArrayList<Integer> num)
 	{
 		int j = 0;
@@ -105,7 +106,7 @@ public class DataAnalytics
 			} 
 		} 
 	} 
-	
+
 	public static void MaxMin(ArrayList<Integer> num)
 	{
 		int length = num.size();
@@ -113,7 +114,7 @@ public class DataAnalytics
 		int min = num.get(0);
 		System.out.println("The Max is:  " + max + "\nThe Min is: " + min);
 	}
-	
+
 	public static void Average(ArrayList<Integer> num) 
 	{
 		int length = num.size();
@@ -123,12 +124,23 @@ public class DataAnalytics
 			total += num.get(i);
 		}
 		double average = (double) total / length; 
-		System.out.println("\nAverage: " + average);
+		System.out.printf("%nAverage: %.3f%n", average);
 	}
-	
+
 	public static void PerfectSquares(ArrayList<Integer> num)
 	{
-		// TODO Find perfect squares in ArrayList
+		int length = num.size();
+		for (int i = 0; i < length; i++)
+		{	
+			double digit = num.get(i);
+			double sqrt = Math.sqrt(digit);
+			int rounded = (int) sqrt;
+			if (Math.pow(sqrt, 2) == Math.pow(rounded, 2))
+			{
+				System.out.println(digit + " is a perfect square");
+			}
+		}		
 	}
+
 }
 
