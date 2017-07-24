@@ -49,6 +49,7 @@ public class DataApplication {
 			}
 			searchData(theData);
 			overTwoThousand(theData);
+			mediaCount(theData);
 			scan.close();
 		}
 		catch (FileNotFoundException e) 
@@ -84,10 +85,10 @@ public class DataApplication {
 	public static void overTwoThousand(ArrayList<String> vals)
 	{
 		System.out.print("These consultants charge fees over $2000:\n");
-
 		for (int i = 0; i < vals.size(); i++) 
 		{
 			// 2, 6, 10
+			// TODO fix this hard-coded conditional
 			if ( i == 2 || i == 6 || i == 10 || i == 14 || i == 18)
 			{
 				int fee = Integer.parseInt(vals.get(i));
@@ -98,10 +99,20 @@ public class DataApplication {
 				}
 			}
 		}
-
-		System.out.println(" over2K done");
-
 	}
 
+	public static void mediaCount(ArrayList<String> vals)
+	{
+		System.out.print("Number of consultants providing media services:\n");
+		int count = 0;
+		for (int i = 0; i < vals.size(); i++) 
+		{
+			if(vals.get(i).equals("Media"))
+			{
+				++count;
+			}
+		}
+		System.out.println(count);
+	}
 
 }
