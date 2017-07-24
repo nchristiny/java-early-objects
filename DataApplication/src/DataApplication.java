@@ -24,6 +24,7 @@ public class DataApplication {
 
 			// read the column headings from the flat text file
 			String line = scan.nextLine();
+
 			while(scan.hasNextLine())
 			{
 				line = scan.nextLine();
@@ -46,6 +47,8 @@ public class DataApplication {
 					System.out.println(" ");
 				count++;
 			}
+			searchData(theData);
+			overTwoThousand(theData);
 			scan.close();
 		}
 		catch (FileNotFoundException e) 
@@ -53,4 +56,52 @@ public class DataApplication {
 			e.printStackTrace();
 		}
 	}
+
+	public static void searchData(ArrayList<String> vals)
+	{
+		System.out.print("enter a name: ");
+		Scanner sc = new Scanner(System.in);
+		String strName = sc.nextLine().trim(); 
+		boolean found = false;
+
+		for (int i = 0; i < vals.size(); i++) 
+		{
+			if(vals.get(i).equals(strName.trim()))
+			{
+				found = true;
+				break;
+			}
+		}
+
+		if(found == true)
+			System.out.println(" data found ");
+		else
+			System.out.println(" data not found ");
+
+		sc.close();
+	}
+
+	public static void overTwoThousand(ArrayList<String> vals)
+	{
+		System.out.print("These consultants charge fees over $2000:\n");
+
+		for (int i = 0; i < vals.size(); i++) 
+		{
+			// 2, 6, 10
+			if ( i == 2 || i == 6 || i == 10 || i == 14 || i == 18)
+			{
+				int fee = Integer.parseInt(vals.get(i));
+				if(fee > 2000)
+				{
+					System.out.println(vals.get(i - 1));
+					System.out.println("...");
+				}
+			}
+		}
+
+		System.out.println(" over2K done");
+
+	}
+
+
 }
