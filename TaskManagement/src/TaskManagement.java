@@ -33,14 +33,11 @@ public class TaskManagement
 			ArrayList<String> theStatus = new ArrayList<String>
 			(Arrays.asList("Open", "Open", "Open", "Open", "Open"));
 
-			// define the current task
-			int num = 0;
-
-			// define the processors
 			int processor1 = 0;
 			int processor2 = 0;
-
-			// define the total running time
+			int processor3 = 0;
+			int processor4 = 0;
+			int processor5 = 0;
 			int TRT = 0;
 
 			// display initial data
@@ -49,23 +46,44 @@ public class TaskManagement
 			listStatus(theStatus);      
 
 			// commence the processing
-			// assign the duration of Task 1 to processor 1
-			// change the status of Task 1
-			// update the total running time of the complete process
-			num += 1;
+			// assign the duration of tasks to processors
 			processor1 += theDurations.get(0);
-			theStatus.set(0, "In Use"); 
-			TRT += theDurations.get(0);
+			processor2 += theDurations.get(1);
+			processor3 += theDurations.get(2);
+			processor4 += theDurations.get(3);
+			processor5 += theDurations.get(4);
+
+			// Update status and the total running time of the complete process
+			for(int i = 0;i <= 4; i++)
+			{
+				theStatus.set(i, "In Use"); 
+				TRT += theDurations.get(i);
+			}
+			System.out.println(""); 			
+			System.out.println("Total initial running time is " + TRT); 			
 
 			// show current process 
-			showProgress(num, processor1, theStatus.get(0), TRT);
+			showProgress(1, processor1, theStatus.get(0), TRT);
+			showProgress(2, processor2, theStatus.get(1), TRT);
+			showProgress(3, processor3, theStatus.get(2), TRT);
+			showProgress(4, processor4, theStatus.get(3), TRT);
+			showProgress(5, processor5, theStatus.get(4), TRT);
 
-			// display current data
-			listTasks(theTasks);
-			listDurations(theDurations);
-			listStatus(theStatus); 
+			boolean stillWorking = true;
 
-			// continue the task processing   
+			while(stillWorking) {
+				processTasks(theTasks, theDurations, theStatus);
+				
+				listTasks(theTasks);
+				listDurations(theDurations);
+				listStatus(theStatus);  
+				
+				if (theStatus.contains("In Use"))
+					stillWorking = true;
+				else
+					stillWorking = false;
+			}
+			System.out.println("All done");
 
 			scan.close();
 		}
@@ -74,7 +92,7 @@ public class TaskManagement
 			e.getMessage();
 		}
 	}
-	
+
 	public static void listTasks(ArrayList<String> tasks)
 	{
 		System.out.println(" ");
@@ -84,8 +102,8 @@ public class TaskManagement
 		}
 		System.out.println(" ");
 	}
-	
-	public static void  listDurations(ArrayList<Integer> durations)
+
+	public static void listDurations(ArrayList<Integer> durations)
 	{
 		System.out.println(" ");
 		for (int i = 0; i < durations.size(); i++) 
@@ -108,10 +126,29 @@ public class TaskManagement
 	public static void showProgress(int n, int processor, String s, int total)
 	{
 		System.out.println(" ");
-		System.out.println("Task Number" + "\t" + n );
+		System.out.println("Task number" + "\t" + n );
 		System.out.println("task time" + "\t" + processor );
 		System.out.println("task status" + "\t" + s );
 		System.out.println("total time" + "\t" + total );
+		System.out.println(" ");
+	}
+
+	public static void processTasks(ArrayList<String> tasks, ArrayList<Integer> durations, ArrayList<String> status)
+	{
+		System.out.println("\nProcessing...");
+		for (int i = 0; i < tasks.size(); i++) 
+		{
+			// Process five units of time 
+			if (durations.get(i) > 0) {
+				durations.set( i, durations.get(i) - 5);
+				if (durations.get(i) <= 0)
+				{
+					System.out.println("Job done on " + tasks.get(i));
+					durations.set(i, 0);
+					status.set(i, "Closed");
+				}
+			}
+		}
 		System.out.println(" ");
 	}
 }
