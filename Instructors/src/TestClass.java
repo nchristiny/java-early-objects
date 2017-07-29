@@ -19,14 +19,9 @@ public class TestClass {
 			Spartans sparta = new Spartans();
 			Athenians athens = new Athenians();
 			
-			System.out.println("The budget for regular instructors is");
-			System.out.println(instruct.budget);
-			
-			System.out.println("The budget for Athenian instructors is");
-			System.out.println(athens.budget);
-
-			System.out.println("The budget for Spartan instructors is");
-			System.out.println(sparta.budget);
+			instruct.getInformation();
+			athens.getInformation();
+			sparta.getInformation();
 			
 		}
 		catch (Exception e) 
