@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -14,16 +16,19 @@ public class SecondsCalculator {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter an integer from 1 to 86,400: ");
-		int input = sc.nextInt();
-		System.out.println("Number of seconds: " + input);
+		int input = 0; 
+		do {
+			System.out.print("Enter an integer from 1 to 86,400: ");
+			input = sc.nextInt();	
+		} while (input < 1 || input >= 86400);
+		System.out.printf("Number of seconds: %s%n", String.valueOf(nf.format(input)));
 		int hours = input / 60 / 60; 
 		int minutes = input / 60 % 60;  
 		int seconds = input % 60 % 60;
-		System.out.println(hours + " Hours");
-		System.out.println(minutes + " Minutes");
-		System.out.println(seconds + " Seconds");
+		System.out.printf("%d hours%n%d minutes%n%d seconds", hours, minutes, seconds);
+		sc.close();
 	}
 
 }
